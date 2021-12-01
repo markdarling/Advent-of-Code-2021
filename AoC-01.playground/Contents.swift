@@ -2025,6 +2025,21 @@ func countIncreases(input: [Int]) -> Int {
     return i
 }
 
+
+func buildArrayOf3Sum(input: [Int]) -> [Int] {
+    var sumArray: [Int] = []
+
+    var s = Stack()
+    for thisNum in input {
+        s.addItem(newItem: thisNum)
+        if s.isValid() {
+            sumArray.append(s.sum())
+        }
+    }
+
+    return sumArray
+}
+
 struct Stack {
     var items: [Int] = []
     
@@ -2065,19 +2080,6 @@ func solutionTwo() {
     print(numberOfIncreases)
 }
 
-func buildArrayOf3Sum(input: [Int]) -> [Int] {
-    var sumArray: [Int] = []
-
-    var s = Stack()
-    for thisNum in input {
-        s.addItem(newItem: thisNum)
-        if s.isValid() {
-            sumArray.append(s.sum())
-        }
-    }
-
-    return sumArray
-}
 
 solutionOne()
 solutionTwo()
