@@ -95,7 +95,6 @@ class BingoBoard {
     func hasLine() -> Bool {
         for l in lines {
             if l.isLine() {
-                //print("H Line")
                 return true
             }
         }
@@ -156,13 +155,11 @@ func solution() {
     let boards = setup.1
 
     for n in numbersToCall {
-        for b in boards {
-            if (!b.hasLine()) {
-                b.markNumber(v: n)
-                
-                if (b.hasLine()) {
-                    print("Called \(n) to make line (Board \(b.boardNumber)) - ANSWER: \(b.calculateValue(calledNumber: n))")
-                }
+        for b in boards.filter({ !$0.hasLine() }) {
+            b.markNumber(v: n)
+            
+            if (b.hasLine()) {
+                print("Called \(n) to make line (Board \(b.boardNumber)) - ANSWER: \(b.calculateValue(calledNumber: n))")
             }
         }
     }
